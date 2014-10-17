@@ -4,12 +4,14 @@
  * albert.shala@gmail.com
 *************************/
 
+
+var VD = {}; // VD = Valid Date
 /**
  * Check if is a valid Day
  * @param {day}
  * @type {Function}
  */
-var isValidDay = (function(day) {
+VD.isValidDay = (function(day) {
     try {
         if ( (day <= 31 && day >= 1) && day !== undefined) {
             return true;
@@ -27,7 +29,7 @@ var isValidDay = (function(day) {
  * @param {month}
  * @type {Function}
  */
-var isValidMonth = (function(month) {
+VD.isValidMonth = (function(month) {
     try {
         if (month <= 12 && month >= 1 && month !== undefined) {
             return true;
@@ -45,7 +47,7 @@ var isValidMonth = (function(month) {
  * @param {year}
  * @type {Function}
  */
-var isValidYear = (function(year) {
+VD.isValidYear = (function(year) {
     try {
         if (year.length === 4 && year !== undefined) {
             return true;
@@ -63,12 +65,12 @@ var isValidYear = (function(year) {
  * @param txtDate - The full date in string format
  * @returns {boolean}
  */
-var checkDate = function(txtDate) {
+VD.checkDate = function(txtDate) {
     var currVal = txtDate;
 
     if(currVal === "") {
         return false;
-    }Modal
+    }
 
     var DatePattern = /^(\d{1,2})([./-])(\d{1,2})([./-])(\d{1,4})$/;
     var calendarDate = currVal.match(DatePattern);
@@ -94,7 +96,7 @@ $(function() {
 
     startInput.on('blur', function() {
         var currentValue = $(this).val();
-        if (checkDate(currentValue)) {
+        if (VD.checkDate(currentValue)) {
             $(this).val(currentValue);
         } else {
             $(this).val("");
@@ -103,7 +105,7 @@ $(function() {
 
     endInput.on('blur', function(e) {
         var currentValue = $(this).val();
-        if (checkDate(currentValue)) {
+        if (VD.checkDate(currentValue)) {
             $(this).val(currentValue);
         } else {
             $(this).val("");
